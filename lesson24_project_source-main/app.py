@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
 
-def do_cmd(cmd: str, value: str, data: list[str]):
+def do_cmd(cmd: str, value: str, data: list[str]) -> list:
     if cmd == 'filter':
         result = list(filter(lambda record: value in record, data))
     elif cmd == 'map':
@@ -31,7 +31,7 @@ def do_cmd(cmd: str, value: str, data: list[str]):
     return result
 
 
-def do_query(params: dict):
+def do_query(params: dict) -> list:
     with open(os.path.join(DATA_DIR, params["file_name"])) as f:
         file_data = f.readlines()
     res = file_data
